@@ -1,0 +1,187 @@
+<div class="main-content">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <h4 class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">profile</h4>
+      </div>
+      <button class="btn btn-primary float-right mr-5" (click)="OnBack()">Back</button>
+    </nav>
+    <form [formGroup]="formValue">
+
+        <!-- Header -->
+        <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://www.shutterstock.com/image-vector/abstract-hexagon-background-technology-polygonal-260nw-489091843.jpg); background-size: cover; background-position: center top;">
+        <!-- Mask -->
+        <span class="mask bg-gradient-default opacity-8"></span>
+        <!-- Header container -->
+        <div class="container-fluid d-flex align-items-center">
+            <div class="row">
+            <div class="col-lg-7 col-md-10">
+                <h1 class="display-2 text-white">Hello {{userName}}</h1>
+                <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your details here!</p>
+            </div>
+            </div>
+        </div>
+        </div>
+        <!-- Page content -->
+        <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+            <div class="shadow">
+                <div class="row justify-content-center">
+                <div class="col-lg-3 order-lg-2">
+                    <div class="card-profile-image">
+                        <a href="#">
+                            <img src="https://www.pngitem.com/pimgs/m/357-3571001_it-s-an-icon-for-the-famous-cartoon.png" class="rounded-circle">
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-8 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                    <h3 class="mb-0">My Account</h3>
+                    </div>
+                    <div class="col-4 text-right">
+                        <button class="btn btn-sm btn-primary" (click)="saveForm()">Save</button>
+                    </div>
+                </div>
+                </div>
+                <div class="card-body">
+                    <h6 class="heading-small text-muted mb-4">User information</h6>
+                    <div class="pl-lg-4">
+                    <div class="row">
+                        <div class="col-lg-4">
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="input-first-name">First name</label>
+                            <input formControlName="FirstName" type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name">
+                            <label class="error" *ngIf="isFormSubmitted && formControls.FirstName.errors?.required">First name is required</label>
+                        </div>
+                        </div>
+                        <div class="col-lg-4">
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="input-last-name">Last name</label>
+                            <input formControlName="LastName" type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name">
+                            <label class="error" *ngIf="isFormSubmitted && formControls.LastName.errors?.required">Last name is required</label>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 ml-4">
+                        <div class="form-group">
+                            <label class="form-control-label" for="input-email">Email address</label>
+                            <input formControlName="Email" type="email" id="input-email" class="form-control form-control-alternative" placeholder="example@example.com">
+                            <label class="error" *ngIf="isFormSubmitted && formControls.Email.errors?.required">Email required</label>
+                        </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                            <label class="form-control-label" for="input-email">Date Of Birth</label>
+                            <input formControlName="DateOfBirth" type="date" id="input-email" class="form-control form-control-alternative" placeholder="Date Of Birth">
+                            <label class="error" *ngIf="isFormSubmitted && formControls.DateOfBirth.errors?.required">Date Of Birth is required</label>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <hr class="my-4">
+
+                    <!-- Address -->
+                    <h6 class="heading-small text-muted mb-4 ml-3">Contact information</h6>
+                    <div class="pl-lg-4">
+                    <div class="row">
+                        <div class="col-md-11">
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="input-address">Address</label>
+                            <input formControlName="Address" id="input-address" class="form-control form-control-alternative" placeholder="Home Address" type="text">
+                            <label class="error" *ngIf="isFormSubmitted && formControls.Address.errors?.required">Address is required</label>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="input-city">City</label>
+                            <input formControlName="City" type="text" id="input-city" class="form-control form-control-alternative" placeholder="City">
+                            <label class="error" *ngIf="isFormSubmitted && formControls.City.errors?.required">City is required</label>
+                        </div>
+                        </div>
+                        <div class="col-lg-4">
+                        <div class="form-group focused">
+                            <label class="form-control-label" for="input-country">Country</label>
+                            <input formControlName="Country" type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country">
+                            <label class="error" *ngIf="isFormSubmitted && formControls.Country.errors?.required">Country is required</label>
+                        </div>
+                        </div>
+                        <div class="col-lg-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="input-country">Postal code</label>
+                            <input formControlName="PostalCode" type="text" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                            <label class="error" *ngIf="isFormSubmitted && formControls.PostalCode.errors?.required">Postal code is required</label>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <hr class="my-4">
+                    
+                    <!-- Education -->
+                    <h6 class="heading-small text-muted mb-4 ml-3">Educational Details</h6>
+                    <div class="pl-lg-4">
+                        <div class="row">
+                            <div class="col-lg-7">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="input-city">College Name</label>
+                                <input formControlName="CollegeName" type="text" id="input-city" class="form-control form-control-alternative" placeholder="College Name">
+                                <label class="error" *ngIf="isFormSubmitted && formControls.CollegeName.errors?.required">College name is required</label>
+                            </div>
+                            </div>
+                            <div class="col-lg-4">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="input-country">Percentage</label>
+                                <input formControlName="Percentage" type="text" id="input-country" class="form-control form-control-alternative" placeholder="Percentage">
+                                <label class="error" *ngIf="isFormSubmitted && formControls.Percentage.errors?.required">Percentage is required</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+
+                    <!-- Work Details -->
+                    <h6 class="heading-small text-muted mb-4 ml-3">Work Details</h6>
+                    <div class="pl-lg-4">
+                        <div class="row">
+                            <div class="col-lg-7">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="input-city">Designation</label>
+                                <input formControlName="Designation" type="text" id="input-city" class="form-control form-control-alternative" placeholder="Designation">
+                                <label class="error" *ngIf="isFormSubmitted && formControls.Designation.errors?.required">Designation is required</label>
+                            </div>
+                            </div>
+                            <div class="col-lg-4">
+                            <div class="form-group focused">
+                                <label class="form-control-label" for="input-country">Work Location</label>
+                                <input formControlName="WorkLocation" type="text" id="input-country" class="form-control form-control-alternative" placeholder="Work Location">
+                                <label class="error" *ngIf="isFormSubmitted && formControls.WorkLocation.errors?.required">Work Location is required</label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+
+                    <!-- Description -->
+                    <h6 class="heading-small text-muted mb-4 ml-3">About me</h6>
+                    <div class="pl-lg-4">
+                    <div class="form-group focused col-lg-12">
+                        <textarea formControlName="About" rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..."></textarea>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
+  </div>

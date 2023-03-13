@@ -1,0 +1,69 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 style="color: aliceblue;">Team List</h1>
+        <div class="d-flex">
+            <button class="btn btn-success" (click)="callback()">Profile</button>
+            <button class="btn btn-danger float-right ml-2" (click)="Logout()">Logout</button>
+        </div>
+    </div>
+</nav>
+<table class="table">
+    <thead>
+        <tr style="width: 100%;">
+            <th scope="col" style="width: 5%;">S.No</th>
+            <th scope="col" style="width: 15%;">User Id</th>
+            <th scope="col" style="width: 30%;">Name</th>
+            <th scope="col" style="width: 20%;">Email</th>
+            <th scope="col" style="width: 10%;">Role</th>
+            <th scope="col" style="width: 20%;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="width: 100%;" *ngFor="let member of teamList;let i=index;">
+            <td style="width: 5%;">{{i+1}}</td>
+            <td style="width: 15%;">{{member.UserId}}</td>
+            <td style="width: 30%;">{{member.Name}}</td>
+            <td style="width: 20%;">{{member.Email}}</td>
+            <td style="width: 10%;">{{member.RoleName}}</td>
+            <td style="width: 20%;">
+                <button class="btn btn-info mx-3" data-toggle="modal" data-target="#userModal" (click)="this.assignedTo=member.UserId;this.addTaskForm.reset();">Assign Task</button>
+                <button class="btn btn-success" (click)="navigateToTaskBoard(member.UserId)">Task Board</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Task Modal Area -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
+          <button type="button" class="close transparent-button" data-dismiss="modal" aria-label="Close">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="addTaskForm">
+            <mat-form-field class="w-100">
+              <mat-label>Task Name</mat-label>
+              <input type="text" matInput placeholder="Task Name" formControlName="taskName">
+              <mat-error *ngIf="this.addTaskForm.get('taskName')?.hasError('required')">Task Name is required</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="w-100">
+                <mat-label>Task Details</mat-label>
+                <textarea matInput placeholder="Task Details..." formControlName="taskDetails" ></textarea>
+                <mat-error *ngIf="this.addTaskForm.get('taskDetails')?.hasError('required')">Task Details is required</mat-error>
+            </mat-form-field>
+  
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" #cancelButton data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="submitForm()">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
